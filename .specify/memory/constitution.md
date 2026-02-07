@@ -1,55 +1,46 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+SYNC IMPACT REPORT
+Version change: N/A → 1.0.0
+Added sections: All principles and sections as per project requirements
+Removed sections: None (new constitution)
+Modified principles: None (new constitution)
+Templates requiring updates:
+  - ✅ .specify/templates/plan-template.md - No changes needed
+  - ✅ .specify/templates/spec-template.md - No changes needed
+  - ✅ .specify/templates/tasks-template.md - No changes needed
+  - ✅ .qwen/commands/*.toml - No changes needed
+Follow-up TODOs: None
+-->
+
+# Hackathon Todo Phase 2 - Full-Stack Web App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Agentic Development First
+Every feature and implementation starts with agent specification and planning; All code must be generated through Claude Code agents using specs; No manual coding allowed - complete implementation via agentic workflow
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Security-First Architecture
+Authentication required for all endpoints using Better Auth with JWT tokens; User data isolation mandatory - each user sees only their own tasks; JWT verification and user_id filtering enforced at backend level
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Test-Driven Development (NON-NEGOTIABLE)
+TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced; All features must have comprehensive test coverage before implementation
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Full-Stack Integration Testing
+Focus areas requiring integration tests: API endpoint authentication, User data isolation, Cross-service communication, Database persistence, Frontend-backend interaction
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Modern Technology Stack Compliance
+Frontend: Next.js 16+ with TypeScript and Tailwind CSS; Backend: Python FastAPI with SQLModel; Database: Neon Serverless PostgreSQL; Authentication: Better Auth with JWT plugin
 
-### [PRINCIPLE_6_NAME]
+### REST API Standards
+All API endpoints under /api/ with user_id in path; JWT tokens in Authorization: Bearer header; Shared BETTER_AUTH_SECRET between frontend and backend
 
+## Additional Constraints and Requirements
+Multi-user support with persistent storage; Responsive web application design; 5 basic Todo features: Add, View, Update, Delete, Mark Complete; Complete user data isolation; Phase II of hackathon project evolving from console app
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+Use Claude Projects with 6 specialized agents; Spec-Kit Plus for specification management; All implementation via agent specifications; Next.js App Router pattern; SQLModel for database modeling
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+All PRs/reviews must verify agentic development compliance; All code changes must follow specification-driven approach; Architecture decisions require ADR documentation; Manual code changes are prohibited
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-08 | **Last Amended**: 2026-01-08

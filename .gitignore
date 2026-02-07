@@ -1,0 +1,119 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+.ENV.db
+.python-version
+.pytest_cache/
+.coverage
+htmlcov/
+.cov/
+.coverage.*
+.nox/
+.tox/
+.eggs/
+*.egg
+*.egg-info/
+.installed.cfg
+*.manifest
+*.spec
+.direnv/
+.pdm-python
+.pdm.toml
+.hypothesis/
+
+# Environment
+.env
+.env.local
+.env.backup
+.env.dev
+.env.development
+.env.prod
+.env.production
+.env.staging
+.env.test
+.env.testing
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+.directory
+.Trashes
+*.nib
+*.lproj/
+.svn/
+CVS/
+
+# Logs
+*.log
+logs/
+log/
+
+# Testing
+.tests/
+test/
+coverage/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg-link
+
+# Backend specific
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/logs/
+backend/media/
+*.sqlite
+*.db
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+.ENV/
+
+# FastAPI and Uvicorn
+uvicorn_error.log
+uvicorn_access.log
+
+# Database
+*.db
+*.db-journal
+
+# Secrets
+secrets/
+secret/
+config/secrets.yml
+config/secrets.yaml

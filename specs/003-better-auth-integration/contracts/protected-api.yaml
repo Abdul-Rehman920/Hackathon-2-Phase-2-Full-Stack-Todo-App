@@ -1,0 +1,231 @@
+# Protected API Contracts
+
+## OpenAPI Specification for Protected Endpoints
+
+```yaml
+openapi: 3.0.0
+info:
+  title: Protected API
+  version: 1.0.0
+  description: API endpoints that require authentication
+
+paths:
+  /api/tasks:
+    get:
+      summary: Get user's tasks
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: List of user's tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Task's unique identifier
+                    title:
+                      type: string
+                      description: Task title
+                    completed:
+                      type: boolean
+                      description: Whether the task is completed
+                    user_id:
+                      type: string
+                      description: ID of the user who owns the task
+                    created_at:
+                      type: string
+                      format: date-time
+                      description: Task creation timestamp
+        '401':
+          description: Unauthorized - invalid or expired token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Unauthorized"
+    post:
+      summary: Create a new task
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Task title
+                completed:
+                  type: boolean
+                  description: Whether the task is completed (default: false)
+              required:
+                - title
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Task's unique identifier
+                  title:
+                    type: string
+                    description: Task title
+                  completed:
+                    type: boolean
+                    description: Whether the task is completed
+                  user_id:
+                    type: string
+                    description: ID of the user who owns the task
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Task creation timestamp
+        '401':
+          description: Unauthorized - invalid or expired token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Unauthorized"
+
+  /api/tasks/{id}:
+    get:
+      summary: Get a specific task
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Task ID
+      responses:
+        '200':
+          description: Task details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Task's unique identifier
+                  title:
+                    type: string
+                    description: Task title
+                  completed:
+                    type: boolean
+                    description: Whether the task is completed
+                  user_id:
+                    type: string
+                    description: ID of the user who owns the task
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Task creation timestamp
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Task not found
+    put:
+      summary: Update a task
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Task ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Task title
+                completed:
+                  type: boolean
+                  description: Whether the task is completed
+      responses:
+        '200':
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Task's unique identifier
+                  title:
+                    type: string
+                    description: Task title
+                  completed:
+                    type: boolean
+                    description: Whether the task is completed
+                  user_id:
+                    type: string
+                    description: ID of the user who owns the task
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Task update timestamp
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Task not found
+    delete:
+      summary: Delete a task
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Task ID
+      responses:
+        '204':
+          description: Task deleted successfully
+        '401':
+          description: Unauthorized - invalid or expired token
+        '404':
+          description: Task not found
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+```
